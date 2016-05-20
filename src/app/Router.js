@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import CommonRouter from "./common/Router";
-import CustomerRouter from "./customer/Router";
+import UserRouter from "./user/Router";
 
 export default class AppRouter extends React.Component {
 
@@ -14,7 +14,7 @@ export default class AppRouter extends React.Component {
     return (
       <Router history={history}>
         {CommonRouter}
-        {CustomerRouter}
+        {UserRouter}
       </Router>
     );
   }

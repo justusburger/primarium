@@ -1,0 +1,30 @@
+.layout-body-container {
+  height: 100%;
+  padding: 50px 0;
+}
+
+.main-container {
+  background: #fefefe;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 !important;
+}
+
+.layout-sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 80%;
+}
+
+.layout-main-content {
+  width: 80%;
+  float: right;
+  min-height: 700px;
+  position: relative;
+  background: #eaf1f5;
+}

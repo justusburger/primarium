@@ -1,2 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
-public
+public/*.js
+public/*.map
+public/*.ttf
+public/*.eot
+public/*.woff
+public/*.woff2
+public/*.svg
