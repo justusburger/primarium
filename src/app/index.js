@@ -6,11 +6,14 @@ import { routerReducer } from 'react-router-redux';
 
 import AppRouter from "./Router";
 
+import userReducer from "./user/Reducer";
+
 class Application {
   start() {
     const store = createStore(
       combineReducers({
-        routing: routerReducer
+        routing: routerReducer,
+        user: userReducer
       })
     );
 
