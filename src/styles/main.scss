@@ -1,10 +1,11 @@
-@import "background";
-@import "layout";
-@import "menu";
-@import "profile-image";
-@import "margin";
-@import "padding";
-@import "grid";
+@import "partials/background";
+@import "partials/layout";
+@import "partials/menu";
+@import "partials/profile-image";
+@import "partials/margin";
+@import "partials/padding";
+@import "partials/grid";
+@import "partials/loader";
 
 body, html, #app {
   height: 100%;

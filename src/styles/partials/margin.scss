@@ -41,6 +41,7 @@
   .mr-#{$size} { @include mr($size); }
 }
 
+@include margin(-5);
 @include margin(0);
 @include margin(5);
 @include margin(10);

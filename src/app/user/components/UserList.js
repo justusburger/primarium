@@ -1,40 +1,16 @@
 import React from "react";
+import Store from "../../Store";
+import { userListFetch } from "../Actions";
+import { connect } from "react-redux";
 
-export default class UserList extends React.Component {
-  
+class UserList extends React.Component {
+
+  constructor() {
+    super();
+    Store.dispatch(userListFetch());
+  }
+
   render() {
-    var users = [
-      {
-        id: 1,
-        name: 'Justus',
-        surname: 'Burger',
-        joined: '3 months ago'
-      },
-      {
-        id: 2,
-        name: 'Roeline',
-        surname: 'Burger',
-        joined: '1 week ago'
-      },
-      {
-        id: 3,
-        name: 'Belinda',
-        surname: 'Burger',
-        joined: '4 months ago'
-      },
-      {
-        id: 4,
-        name: 'David',
-        surname: 'Burton',
-        joined: '1 year ago'
-      },
-      {
-        id: 5,
-        name: 'Geoff',
-        surname: 'Newmarch',
-        joined: '3 months ago'
-      }
-    ];
     return (
       <div>
         <table class="grid">
@@ -43,19 +19,32 @@ export default class UserList extends React.Component {
               <th class="grid-row-select">
                 <a><i class="material-icons">check_box_outline_blank</i></a>
               </th>
+              <th class="grid-column-min-width"></th>
               <th>Name</th>
-              <th>Joined</th>
+              <th>Slug</th>
+              <th>Url</th>
               <th class="grid-column-min-width"></th>
             </tr>
           </thead>
           <tbody>
-            { users.map((user) => (
+            { this.props.list.isFetching ? (
+              <tr class="grid-fetching">
+                <td colSpan="1000">
+                  <div class="loader"></div>
+                </td>
+              </tr>
+            ) : null }
+            { this.props.list.items.map((user) => (
               <tr key={user.id}>
                 <td class="grid-row-select">
                   <a><i class="material-icons">check_box_outline_blank</i></a>
                 </td>
-                <td>{user.name} {user.surname}</td>
-                <td>{user.joined}</td>
+                <td>
+                  <div class="profile-image-sm pull-left mtb--5" style={{backgroundImage: 'url("' + user.avatar_urls['96'] + '")'}}></div>
+                </td>
+                <td>{user.name}</td>
+                <td>{user.slug}</td>
+                <td>{user.url}</td>
                 <td class="grid-row-action">
                   <span class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">more_vert</i></a>
@@ -76,3 +65,7 @@ export default class UserList extends React.Component {
   }
   
 }
+
+export default connect((state, ownProps) => ({
+  list: state.user.list
+}))(UserList);
