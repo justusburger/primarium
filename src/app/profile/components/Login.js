@@ -1,10 +1,11 @@
 import React from "react";
 import { reduxForm } from "redux-form";
+import { login } from "../Actions";
 
 class Login extends React.Component {
 
   submit(model) {
-    console.log(model);
+    this.props.dispatch(login(model.username, model.password));
   }
 
   render() {
