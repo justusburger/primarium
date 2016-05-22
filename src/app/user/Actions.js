@@ -1,6 +1,7 @@
-import axios from "axios";
+import { GET, PUT } from "../common/utilities/resource";
+import { toCamelCase, toDashCase } from "../common/utilities/convert";
 
-/* Action types */
+/* User list */
 export const USER_LIST_FETCH_REQUEST = '@@user/FETCH_USER_LIST_REQUEST';
 function userListFetchRequest() {
   return { type: USER_LIST_FETCH_REQUEST };
@@ -11,20 +12,53 @@ function userListFetchComplete(items, receivedAt) {
   return { type: USER_LIST_FETCH_COMPLETE, items, receivedAt };
 }
 
-export const USER_LIST_FETCH_FAILED = '@@user/FETCH_USER_LIST_FAILED';
-export const USER_LIST_INVALIDATE = '@@user/USER_LIST_INVALIDATE';
-
-/* Action creators */
 export function userListFetch() {
   return function(dispatch) {
     dispatch(userListFetchRequest());
 
-    return axios({
-      url: 'http://localhost:8000/wp-json/wp/v2/users',
-      method: 'GET',
-      headers: { 'Authorization': 'Basic YWRtaW46MW5kM24xQGw=' }
-    }).then((response) => {
-      dispatch(userListFetchComplete(response.data, Date.now()));
+    return GET('/users?context=edit').then((users) => {
+      dispatch(userListFetchComplete(users, Date.now()));
+    });
+  };
+}
+
+/* User details */
+export const USER_DETAILS_FETCH_REQUEST = '@@user/USER_DETAILS_FETCH_REQUEST';
+function userDetailsFetchRequest(id) {
+  return { type: USER_DETAILS_FETCH_REQUEST, id };
+}
+
+export const USER_DETAILS_FETCH_COMPLETE = '@@user/USER_DETAILS_FETCH_COMPLETE';
+function userDetailsFetchComplete(user, receivedAt) {
+  return { type: USER_DETAILS_FETCH_COMPLETE, user, receivedAt };
+}
+
+export const USER_DETAILS_UPDATE_REQUEST = '@@user/USER_DETAILS_UPDATE_REQUEST';
+function userDetailsUpdateRequest() {
+  return { type: USER_DETAILS_UPDATE_REQUEST };
+}
+
+export const USER_DETAILS_UPDATE_COMPLETE = '@@user/USER_DETAILS_UPDATE_COMPLETE';
+function userDetailsUpdateComplete(user, updatedAt) {
+  return { type: USER_DETAILS_UPDATE_REQUEST, user, updatedAt };
+}
+
+export function userFetch(id) {
+  return function(dispatch) {
+    dispatch(userDetailsFetchRequest(id));
+
+    return GET('/users/' + id + '?context=edit').then((user) => {
+      dispatch(userDetailsFetchComplete(user, Date.now()));
+    });
+  };
+}
+
+export function userUpdate(id, user) {
+  return function(dispatch) {
+    dispatch(userDetailsUpdateRequest());
+
+    return PUT('/users/' + id, user).then((user) => {
+      dispatch(userDetailsUpdateComplete(user, Date.now()));
     });
   };
 }

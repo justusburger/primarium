@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic);
+
 @import "partials/background";
 @import "partials/layout";
 @import "partials/menu";
@@ -6,11 +8,20 @@
 @import "partials/padding";
 @import "partials/grid";
 @import "partials/loader";
+@import "partials/form";
+@import "partials/action-bar";
+@import "partials/tabs";
+@import "partials/button";
 
 body, html, #app {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
   cursor: pointer;
+}
+
+.btn {
+  border-radius: 0 !important;
 }

@@ -6,6 +6,7 @@
   background-size: cover;
   display: inline-block;
 }
+
 .profile-image-sm {
   width: 30px;
   height: 30px;
@@ -13,4 +14,12 @@
   background-position: center;
   background-size: cover;
   display: inline-block;
+}
+
+.profile-image-generic {
+  .material-icons {
+    font-size: 150px;
+    color: #eee;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
 }

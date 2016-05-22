@@ -5,6 +5,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import CommonRouter from "./common/Router";
 import UserRouter from "./user/Router";
+import ProfileRouter from "./profile/Router";
 
 export default class AppRouter extends React.Component {
 
@@ -15,6 +16,7 @@ export default class AppRouter extends React.Component {
       <Router history={history}>
         {CommonRouter}
         {UserRouter}
+        {ProfileRouter}
       </Router>
     );
   }

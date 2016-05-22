@@ -1,0 +1,35 @@
+@import "colors";
+
+.tabs-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    padding: 0 15px;
+
+    a {
+      display: block;
+      color: #333;
+      text-transform: uppercase;
+      padding: 5px 0;
+      font-weight: 300;
+      text-decoration: none !important;
+      font-size: 13px;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      a {
+        opacity: 1;
+        font-weight: bold;
+        border-bottom: solid 4px $accent;
+      }
+    }
+  }
+}

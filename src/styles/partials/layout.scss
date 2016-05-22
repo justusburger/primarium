@@ -13,6 +13,11 @@
   padding: 0 !important;
 }
 
+.public-container {
+  @extend .main-container;
+  max-width: 400px;
+}
+
 .layout-sidebar {
   position: absolute;
   left: 0;
@@ -27,4 +32,14 @@
   min-height: 700px;
   position: relative;
   background: #eaf1f5;
+}
+
+.page-title {
+  margin: 0;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.public-container-content {
+  min-height: 400px;
 }

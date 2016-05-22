@@ -124,3 +124,17 @@
     height: 40px;
   }
 }
+
+.grid-link {
+  padding: 0 !important;
+  a {
+    padding: 10px;
+    display: block;
+    text-decoration: none !important;
+    background: #f9f9f9;
+    color: #333;
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+}

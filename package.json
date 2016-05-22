@@ -8,6 +8,7 @@
     "jquery": "^2.2.3",
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
+    "redux-form": "^5.2.4",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {

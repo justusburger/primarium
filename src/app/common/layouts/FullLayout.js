@@ -12,9 +12,7 @@ export default class FullLayout extends React.Component {
             <MenuBar/>
           </div>
           <div class="layout-main-content">
-            <div class="p-30">
-              { this.props.children }
-            </div>
+            { this.props.children }
           </div>
         </div>
       </div>

@@ -1,0 +1,19 @@
+@import "colors";
+
+.btn-accent {
+  background: $accent;
+  color: #fff;
+
+  &:hover {
+    background: darken($accent, 10%);
+    color: #fff !important;
+  }
+}
+
+.btn-lg {
+  padding: 12px 16px;
+}
+
+.btn-rounded.btn {
+  border-radius: 2px !important;
+}

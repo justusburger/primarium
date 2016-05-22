@@ -1,8 +1,5 @@
-import axios from "axios";
 import { combineReducers } from "redux";
 import * as Actions from "./Actions";
-
-const url = 'http://localhost:8000/wp-json/wp/v2/users';
 
 function list(state = {
   isFetching: false,
@@ -29,6 +26,45 @@ function list(state = {
   }
 }
 
+function details(state = {
+  isFetching: false,
+  isUpdating: false,
+  user: {}
+}, action) {
+  switch(action.type) {
+    case Actions.USER_DETAILS_FETCH_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        user: {}
+      });
+      break;
+    case Actions.USER_DETAILS_FETCH_COMPLETE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        user: action.user,
+        lastUpdated: action.receivedAt
+      });
+      break;
+    case Actions.USER_DETAILS_UPDATE_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isUpdating: true
+      });
+      break;
+    case Actions.USER_DETAILS_UPDATE_COMPLETE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isUpdating: false,
+        user: action.user,
+        lastUpdated: action.updatedAt
+      });
+      break;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
-  list
+  list,
+  details
 });
