@@ -4,16 +4,30 @@
   position: relative;
   overflow: hidden;
   background-color: #f9f9f9;
+
+  &:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #2980b9;
+    animation: loading 2s linear infinite;
+  }
+
+  &.loader-white {
+    background-color: rgba(255, 255, 255, 0.2);
+    &:before {
+      background-color: #fff;
+    }
+  }
 }
-.loader:before{
-  display: block;
-  position: absolute;
-  content: "";
-  left: -200px;
-  width: 200px;
-  height: 4px;
-  background-color: #2980b9;
-  animation: loading 100ms linear infinite;
+
+.btn {
+  .loader {
+    margin: 10px 0;
+  }
 }
 
 @keyframes loading {

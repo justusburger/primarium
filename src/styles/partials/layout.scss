@@ -8,14 +8,14 @@
   border-radius: 2px;
   position: relative;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  top: 50%;
-  transform: translateY(-50%);
   padding: 0 !important;
 }
 
 .public-container {
   @extend .main-container;
   max-width: 400px;
+  top: 50%;
+  transform: translateY(-60%);
 }
 
 .layout-sidebar {
@@ -29,9 +29,9 @@
 .layout-main-content {
   width: 80%;
   float: right;
-  min-height: 700px;
   position: relative;
   background: #eaf1f5;
+  overflow: scroll;
 }
 
 .page-title {
@@ -42,4 +42,16 @@
 
 .public-container-content {
   min-height: 400px;
+}
+
+.l-height-full {
+  height: 100%;
+}
+
+.l-overflow-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-y: scroll;
 }

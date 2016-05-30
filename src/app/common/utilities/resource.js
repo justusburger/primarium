@@ -1,10 +1,5 @@
 import axios from "axios";
-import { toCamelCase, toDashCase } from './convert';
 import Store from "../../Store";
-
-export const apiNamespace = '/wp/v2';
-export const authNamespace = '/auth/v1'
-export const defaultNamespace = apiNamespace;
 
 let authToken = null;
 Store.subscribe(() => {
@@ -22,15 +17,22 @@ axiosInstance.interceptors.request.use(function (config) {
   return config;
 });
 
-export function GET(url, namespace = defaultNamespace) {
-  return axiosInstance.get(namespace + url)
-    .then((response) => toCamelCase(response.data));
+export function GET(url, data) {
+  return axiosInstance.get(url)
+    .then(response => response.data);
 }
 
-export function PUT(url, data, namespace = defaultNamespace) {
-  return axiosInstance.put(namespace + url, data);
+export function PUT(url, data) {
+  return axiosInstance.put(url, data)
+    .then(response => response.data);
 }
 
-export function POST(url, data, namespace = defaultNamespace) {
-  return axiosInstance.post(namespace + url, toDashCase(data));
+export function POST(url, data) {
+  return axiosInstance.post(url, data)
+    .then(response => response.data);
+}
+
+export function DELETE(url, data) {
+  return axiosInstance.post(url, data)
+    .then(response => response.data);
 }

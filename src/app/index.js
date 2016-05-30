@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import AppRouter from "./Router";
 import AppStore from "./Store";
 
+import { checkSession } from "./profile/Actions";
+
 class Application {
   start() {
     ReactDOM.render((
@@ -12,6 +14,8 @@ class Application {
         <AppRouter store={AppStore}/>
       </Provider>
     ), document.getElementById('app'));
+
+    AppStore.dispatch(checkSession(window.location.pathname));
   }
 
 }

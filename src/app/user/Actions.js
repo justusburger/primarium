@@ -1,5 +1,5 @@
 import { GET, PUT } from "../common/utilities/resource";
-import { toCamelCase, toDashCase } from "../common/utilities/convert";
+import { query } from "./Resource";
 
 /* User list */
 export const USER_LIST_FETCH_REQUEST = '@@user/FETCH_USER_LIST_REQUEST';
@@ -16,7 +16,7 @@ export function userListFetch() {
   return function(dispatch) {
     dispatch(userListFetchRequest());
 
-    return GET('/users?context=edit').then((users) => {
+    return query({}).then((users) => {
       dispatch(userListFetchComplete(users, Date.now()));
     });
   };

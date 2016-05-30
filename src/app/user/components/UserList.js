@@ -11,7 +11,7 @@ class UserList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="l-height-full">
         <div class="action-bar">
           <a class="action-bar-btn pull-right btn btn-accent"><i class="material-icons">person_add</i></a>
         </div>
@@ -25,7 +25,7 @@ class UserList extends React.Component {
             <li><a>All</a></li>
           </ul>
         </div>
-        <div class="p-30">
+        <div class="p-30 l-overflow-container" style={{top: '165px'}}>
           <table class="grid">
             <thead>
               <tr>
@@ -35,7 +35,7 @@ class UserList extends React.Component {
                 <th class="grid-column-min-width"></th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Url</th>
+                <th>Phone</th>
                 <th class="grid-column-min-width"></th>
               </tr>
             </thead>
@@ -53,19 +53,17 @@ class UserList extends React.Component {
                     <a><i class="material-icons">check_box_outline_blank</i></a>
                   </td>
                   <td>
-                    <div class="profile-image-sm pull-left mtb--5" style={{backgroundImage: 'url("' + user.avatarUrls['96'] + '")'}}></div>
+                    <div class="profile-image-sm pull-left mtb--5" style={{backgroundImage: 'url("' + user.profileImageUrl + '")'}}></div>
                   </td>
-                  <td class="grid-link"><Link to={'/users/' + user.id}>{user.name}</Link></td>
+                  <td class="grid-link"><Link to={'/users/' + user.id}>{user.firstName + ' ' + user.lastName}</Link></td>
                   <td>{user.email}</td>
-                  <td>{user.url}</td>
+                  <td>{user.phone}</td>
                   <td class="grid-row-action">
                     <span class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">more_vert</i></a>
                       <ul class="dropdown-menu">
                         <li><Link to={'/users/' + user.id}>Details</Link></li>
                         <li><a>Remove</a></li>
-                        <li><a>Suspend</a></li>
-                        <li><a>Message</a></li>
                       </ul>
                     </span>
                   </td>

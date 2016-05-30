@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const parts = require('./lib/parts.js');
+const autoprefixer = require('autoprefixer');
 
 const PATHS = {
   src: path.join(__dirname, 'src'),
@@ -49,6 +50,9 @@ const common = {
         include: PATHS.nodeModules
       }
     ]
+  },
+  postcss: function () {
+    return [autoprefixer({ browsers: ['last 2 versions'] })];
   },
   plugins: [
 

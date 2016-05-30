@@ -11,7 +11,7 @@ export default class AppRouter extends React.Component {
 
   render() {
     const history = syncHistoryWithStore(browserHistory, this.props.store);
-
+    
     return (
       <Router history={history}>
         {CommonRouter}
